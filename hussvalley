@@ -74,4 +74,8 @@ local __out=table.create and table.create(#__raw) or {}
 for __i=1,#__raw do
     __out[__i]=string.char(__xor(string.byte(__raw,__i),__k[((__i-1)%#__k)+1]))
 end
-local __src=
+local __src=table.concat(__out)
+__d=nil __raw=nil __out=nil __map=nil
+local __f,__err=loadstring(__src)
+if not __f then error("THUMBSHUB module decode failed: "..tostring(__err),0) end
+return __f()
